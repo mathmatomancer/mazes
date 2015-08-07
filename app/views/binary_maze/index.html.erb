@@ -1,0 +1,12 @@
+<canvas id="maze" width="300" height="300"></canvas>
+
+<%= javascript_include_tag "grid_maze" %>
+<script type="text/javascript">
+$(document).ready(function(){
+  var canvas= document.getElementById("maze");
+  console.log("loaded js");
+  var maze_data = <%= @grid.to_json.html_safe %>;
+  console.log(maze_data);
+  MAZES.drawGrid(canvas, maze_data);
+});
+</script>

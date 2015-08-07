@@ -1,0 +1,1 @@
+{"mixinTypes":[],"builders":{"configs":{}},"runners":{"configs":{"recommend":{"ram":256,"variables":{},"options":{}}},"default":"system:/ruby/web/ruby210_rails403"},"description":"Playing with the \"Mazes for Programmers\" book content.","type":"ruby","attributes":{"language":["ruby"]}}
