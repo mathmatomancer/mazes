@@ -1,3 +1,12 @@
+<p>Choose your maze</p>
+<%= form_tag "", method: :get do %>
+  <%= label_tag(:maze_type, "Algorithm:") %>
+  <%= text_field_tag(:maze_type) %>
+  <%= label_tag(:size, "Size:") %>
+  <%= text_field_tag(:size) %>
+  <%= submit_tag("Generate") %>
+<% end %>
+
 <canvas id="maze" width="300" height="300"></canvas>
 
 <%= javascript_include_tag "grid_maze" %>
