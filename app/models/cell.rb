@@ -39,4 +39,8 @@ class Cell
   def to_s
     "(#{row},#{column})"
   end
+
+  def inspect
+    "<Cell #{to_s} @links: #{links.map(&:to_s).join(', ')}"
+  end
 end

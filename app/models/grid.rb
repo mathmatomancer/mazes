@@ -83,7 +83,7 @@ class Grid
     output
   end
   
-  def to_json
+  def as_json
     json = {rows: rows, columns: columns, data: []}
     each_row do |row|
       json[:data] << row.map do |cell|
@@ -91,6 +91,30 @@ class Grid
       end
     end
     
-    json.to_json
+    json
+  end
+
+  def to_json
+    as_json.to_json
+  end
+
+  # if we serialize json, and re-instantiate, we can save mazes we like! :)
+  # this does assume square grid layout...
+  def self.from_json json
+    rows = json[:rows]
+    columns = json[:columns]
+    grid = new(rows, columns)
+    puts grid
+
+    json[:data].each_with_index do |row, i|
+      row.each_with_index do |cell_type, j|
+        working_cell = grid[i,j]
+        puts "working cell: #{working_cell}, has type #{cell_type}"
+        working_cell.link(working_cell.south) unless cell_type % 2 == 1
+        working_cell.link(working_cell.east) unless cell_type >= 2
+      end
+    end
+
+    grid
   end
 end
